@@ -1,0 +1,27 @@
+%p
+= form_for @user do |f|
+   = f.label :name, 'Nombre'
+   = f.text_field :name
+   %br
+   = f.label :lastaname, 'Apellido'
+   = f.text_field :lastname
+   %br
+   = f.label :profile, 'Perfil'
+   = f.select :profile, {"Profesor"=> 'Profesor', "Estudiante"=>'Estudiante'}
+   %br
+   = f.label :email, 'Correo electrónico'
+   = f.text_field :email
+   %br
+   = f.label :password, 'Contraseña'
+   = f.password_field :password
+   %br
+   = f.label :password_confirmation, 'Confirmar contraseña'
+   = f.password_field :password_confirmation
+   %br
+   = f.label :twitter, 'Twitter'
+   = f.text_field :twitter
+   %br
+   = f.hidden_field :autorized
+   %br
+   %p= f.submit (@user.new_record? ? "Registrar" : "Actualizar datos")
+%p

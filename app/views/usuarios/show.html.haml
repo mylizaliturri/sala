@@ -1,4 +1,29 @@
-%h1.title Detalles de usuario #{@user.name}
-%p= show_flash
+%h1.title Detalles de usuario #{@user.nombre} #{@user.apellido}
+
+%p
+  = form_tag usuarios_path, :method => :post do
+  = label :usuario, :nombre, 'Nombre'
+  = text_field :usuario, :nombre, @user.nombre
+    %br
+    = label :usuario, :apellido, 'Apellido'
+    = text_field :usuario, :apellido, @user.apellido
+    %br
+    = label :usuario, :perfil, 'Perfil'
+    %select{:name => "perfil"}
+      %option{:value => "Profesor"} Profesor
+      %option{:value => "Estudiante"} Estudiante
+    %br
+    = label :usuario, :correo, 'Correo electrónico'
+    = text_field :usuario, :correo, @user.correo
+    %br
+    = label :usuario, :clave, 'Contraseña'
+    = password_field :usuario, :clave, @user.clave
+    %br
+    = label :usuario, :twitter, 'Twitter'
+    = text_field :usuario, :twitter, @user.twitter
+    %br
+    = hidden_field :usuario, :autorizado, :value=>@user.autorizado
+    %br
+    = submit_tag 'Actualizar usuario'
 
 

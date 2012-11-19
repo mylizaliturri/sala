@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
+gem "nifty-generators", :group => :development
 
 # use Haml for templates
 gem 'haml'
@@ -39,3 +40,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test
+gem "bcrypt-ruby", :require => "bcrypt"
