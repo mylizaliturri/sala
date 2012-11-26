@@ -12,7 +12,7 @@ gem "nifty-generators", :group => :development
 # use Haml for templates
 gem 'haml'
 gem 'google_calendar', :require => 'google_calendar'
-
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
