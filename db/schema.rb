@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119152109) do
+ActiveRecord::Schema.define(:version => 20121128004300) do
+
+  create_table "accesos", :force => true do |t|
+    t.string   "userid"
+    t.string   "string"
+    t.string   "clave"
+    t.string   "time"
+    t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -26,18 +36,6 @@ ActiveRecord::Schema.define(:version => 20121119152109) do
     t.string   "twitter"
     t.string   "clave"
     t.string   "name"
-  end
-
-  create_table "usuarios", :force => true do |t|
-    t.string   "nombre"
-    t.string   "apellido"
-    t.string   "perfil"
-    t.string   "correo"
-    t.string   "clave"
-    t.string   "twitter"
-    t.boolean  "autorizado"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end

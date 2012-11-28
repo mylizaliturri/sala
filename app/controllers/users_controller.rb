@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required, :except => [:new, :create, :search]
+  respond_to :html, :json
 
   def new
     @user = User.new
@@ -10,10 +11,25 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      Twitter.update("@"+@user.twitter+", Bienvenido al sistema de reservas")
+      Twitter.update("@"+@user.twitter+" bienvenido al sistema de reservas")
       redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
     else
       render :action => 'new'
+    end
+  end
+
+  def search
+    if params[:screen_name]
+    #respond_with(params[:screen_name])
+      @user=User.find_by_twitter(params[:screen_name])
+      if @user
+        respond_with(@user)
+      else
+        objeto=User.new()
+        objeto[:lastname]="novalido"
+        objeto[:name]="novalido"
+        respond_with(objeto)
+      end
     end
   end
 
@@ -28,5 +44,10 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def buscar
+#    quien=params[:twitter]
+#    usuario=User.find_by_twitter.to_Json
   end
 end
